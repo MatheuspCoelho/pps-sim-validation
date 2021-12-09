@@ -27,4 +27,4 @@ if [ ! -d "$ppseos/${3}" ]; then
     mkdir $ppseos/${3}
 fi
 rsync -avPz $outfile $ppseos/${3}/$outfile
-rm -rf $outfile
+rm -rf *.*
