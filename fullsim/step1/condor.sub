@@ -3,12 +3,12 @@ requirements          = (OpSysAndVer =?= "CentOS7")
 error                 = err/$(ClusterId).$(ProcId).err
 output                = out/$(ClusterId).$(ProcId).out
 log                   = log/$(ClusterId).$(ProcId).log
++JobBatchName         = "full_step1"
 +JobFlavour           = "microcentury"
-getenv                = True
 should_transfer_files = YES
 
 transfer_input_files  = config.py
-arguments             = $(Process) config.py step1 CMSSW_12_2_0_pre3 500 $ENV(PWD)
+arguments             = $(Process) config.py step1 CMSSW_12_3_0_pre1 500
 # 1: seed to be used as InitialSeed
 # 2: config file for step1
 # 3: job name and output folder in EOS
