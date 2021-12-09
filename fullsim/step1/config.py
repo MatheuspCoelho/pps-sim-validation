@@ -32,7 +32,7 @@ process.load('SimG4Core.Application.g4SimHits_cfi')
 process.g4SimHits.LHCTransport = cms.bool(True)
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(500)
+        input = cms.untracked.int32(xevents)
         )
 
 process.source = cms.Source("EmptySource",
@@ -74,7 +74,7 @@ process.ProductionFilterSequence = cms.Sequence(process.generator)
 #################################
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('keep *'),
-        fileName = cms.untracked.string('step1_0.root')
+        fileName = cms.untracked.string('xfileout')
         )
 
 process.generation_step = cms.Path(process.pgen)
