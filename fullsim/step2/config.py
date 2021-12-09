@@ -27,7 +27,7 @@ process.source = cms.Source("PoolSource",
     skipEvents=cms.untracked.uint32(0), 
     dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
-    fileNames = cms.untracked.vstring('file:/eos/cms/store/group/phys_pps/sim-validation/full/step1/xinput'),
+    fileNames = cms.untracked.vstring('file:xinput'),
     inputCommands = cms.untracked.vstring(
         'keep *', 
         'drop *_genParticles_*_*', 
@@ -69,10 +69,10 @@ process.FEVTDEBUGoutput = cms.OutputModule("PoolOutputModule",
     fileName = cms.untracked.string('xfileout'),
     outputCommands = process.FEVTDEBUGEventContent.outputCommands +
                      ['keep *_CTPPS*_*_*',
-                         'keep *_*RP*_*_*',
-                         'keep *_generatorSmeared_*_*',
-                         'keep *_generator_unsmeared_*',
-                         'keep *_beamDivergenceVtxGenerator_*_*'],
+                      'keep *_*RP*_*_*',
+                      'keep *_generatorSmeared_*_*',
+                      'keep *_generator_unsmeared_*',
+                      'keep *_beamDivergenceVtxGenerator_*_*'],
     splitLevel = cms.untracked.int32(0)
 )
 
