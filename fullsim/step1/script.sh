@@ -7,13 +7,13 @@ cd $cmssw/src/
 eval `scramv1 runtime -sh`
 scram b -j8
 cd -
-if [ ! -d "${6}/out"]; then
+if [ ! -d "${6}/out" ]; then
     mkdir ${6}/out
 fi
-if [ ! -d "${6}/err"]; then
+if [ ! -d "${6}/err" ]; then
     mkdir ${6}/err
 fi
-if [ ! -d "${6}/log"]; then
+if [ ! -d "${6}/log" ]; then
     mkdir ${6}/log
 fi 
 outfile=${3}_${1}.root
