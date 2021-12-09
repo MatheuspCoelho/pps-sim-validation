@@ -7,15 +7,15 @@ cd $cmssw/src/
 eval `scramv1 runtime -sh`
 scram b -j8
 cd -
-if [ ! -d "${6}/out" ]; then
-    mkdir ${6}/out
-fi
-if [ ! -d "${6}/err" ]; then
-    mkdir ${6}/err
-fi
-if [ ! -d "${6}/log" ]; then
-    mkdir ${6}/log
-fi 
+#if [ ! -d "${6}/out" ]; then
+#    mkdir ${6}/out
+#fi
+#if [ ! -d "${6}/err" ]; then
+#    mkdir ${6}/err
+#fi
+#if [ ! -d "${6}/log" ]; then
+#    mkdir ${6}/log
+#fi 
 outfile=${3}_${1}.root
 sed -i "s/xfileout/$outfile/g" $2
 sed -i "s/xseed/$1/g" $2
@@ -26,4 +26,4 @@ if [ ! -d "$ppseos/${3}" ]; then
     mkdir $ppseos/${3}
 fi
 rsync -avPz $outfile $ppseos/${3}/$outfile
-rm -rf $outfile
+rm -rf *.*
