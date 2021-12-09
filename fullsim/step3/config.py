@@ -22,7 +22,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:/eos/cms/store/group/phys_pps/sim-validation/full/step2/xinput'),
+    fileNames = cms.untracked.vstring('file:/eos/cms/store/group/phys_pps/sim-validation/fullsim/step2/xinput'),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
     secondaryFileNames = cms.untracked.vstring()
 )
