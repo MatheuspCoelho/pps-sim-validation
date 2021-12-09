@@ -15,4 +15,4 @@ arguments             = $(Process) config.py step1 CMSSW_12_2_0_pre3 500 $ENV(PW
 # 4: cmssw release
 # 5: number of events per file
 
-queue 1
+queue 100
