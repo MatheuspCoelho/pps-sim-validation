@@ -7,14 +7,23 @@ cd $cmssw/src/
 eval `scramv1 runtime -sh`
 scram b -j8
 cd -
-mkdir ${6}/out
-mkdir ${6}/err
-mkdir ${6}/log
+if [ ! -d "${6}/out"]; then
+    mkdir ${6}/out
+fi
+if [ ! -d "${6}/err"]; then
+    mkdir ${6}/err
+fi
+if [ ! -d "${6}/log"]; then
+    mkdir ${6}/log
+fi 
 outfile=${3}_${1}.root
 sed -i "s/xfileout/$outfile/g" $2
 sed -i "s/xseed/$1/g" $2
 sed -i "s/xevents/$5/g" $2
 cmsRun ${2}
 ppseos=/eos/cms/store/group/phys_pps/sim-validation/full
+if [ ! -d "$ppseos/${3}" ]; then
+    mkdir $ppseos/${3}
+fi
 rsync -avPz $outfile $ppseos/${3}/$outfile
 rm -rf $outfile
