@@ -36,6 +36,12 @@ process.options = cms.untracked.PSet(
 # Output definition
 
 process.output = cms.OutputModule("PoolOutputModule",
+    compressionAlgorithm = cms.untracked.string('LZMA'),
+    compressionLevel = cms.untracked.int32(4),
+    dataset = cms.untracked.PSet(
+        dataTier = cms.untracked.string('AODSIM'),
+        filterName = cms.untracked.string('')
+    ),
     fileName = cms.untracked.string('xfileout'),
     outputCommands = cms.untracked.vstring(
         "drop *",
