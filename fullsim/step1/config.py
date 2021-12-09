@@ -20,12 +20,12 @@ process.load('Configuration.StandardSequences.GeometrySimDB_cff')
 
 process.load('IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi')
 process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
-  generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+0)),
-  VtxSmeared= cms.PSet(initialSeed = cms.untracked.uint32(20000+0)),
-  LHCTransport=cms.PSet(initialSeed = cms.untracked.uint32(30000+0),
+  generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+xseed)),
+  VtxSmeared= cms.PSet(initialSeed = cms.untracked.uint32(20000+xseed)),
+  LHCTransport=cms.PSet(initialSeed = cms.untracked.uint32(30000+xseed),
                         engineName = cms.untracked.string('TRandom3')),
-  g4SimHits=cms.PSet(initialSeed = cms.untracked.uint32(40000+0)),
-  beamDivergenceVtxGenerator=cms.PSet(initialSeed = cms.untracked.uint32(50000+0))
+  g4SimHits=cms.PSet(initialSeed = cms.untracked.uint32(40000+xseed)),
+  beamDivergenceVtxGenerator=cms.PSet(initialSeed = cms.untracked.uint32(50000+xseed))
 )
 
 process.load('SimG4Core.Application.g4SimHits_cfi')
@@ -36,7 +36,7 @@ process.maxEvents = cms.untracked.PSet(
         )
 
 process.source = cms.Source("EmptySource",
-        firstLuminosityBlock = cms.untracked.uint32(0+1)
+        firstLuminosityBlock = cms.untracked.uint32(xseed+1)
 )
 
 from Configuration.AlCa.GlobalTag import GlobalTag
