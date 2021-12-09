@@ -21,7 +21,7 @@ sed -i "s/xfileout/$outfile/g" $2
 sed -i "s/xseed/$1/g" $2
 sed -i "s/xevents/$5/g" $2
 cmsRun ${2}
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/full
+ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
 if [ ! -d "$ppseos/${3}" ]; then
     mkdir $ppseos/${3}
 fi
