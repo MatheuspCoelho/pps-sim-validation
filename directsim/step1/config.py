@@ -18,26 +18,13 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.StandardSequences.GeometrySimDB_cff')
 
-process.load('IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi')
-process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
-  generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+0)),
-  VtxSmeared= cms.PSet(initialSeed = cms.untracked.uint32(20000+0)),
-  LHCTransport=cms.PSet(initialSeed = cms.untracked.uint32(30000+0),
-                        engineName = cms.untracked.string('TRandom3')),
-  g4SimHits=cms.PSet(initialSeed = cms.untracked.uint32(40000+0)),
-  beamDivergenceVtxGenerator=cms.PSet(initialSeed = cms.untracked.uint32(50000+0))
-)
-
-process.load('SimG4Core.Application.g4SimHits_cfi')
-process.g4SimHits.LHCTransport = cms.bool(True)
-
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(xevents)
+        input = cms.untracked.int32(100)
         )
 
 process.source = cms.Source("EmptySource",
-        firstLuminosityBlock = cms.untracked.uint32(0+1)
-)
+        firstLuminosityBlock = cms.untracked.uint32(1)
+        )
 
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2021_realistic', '')
@@ -74,7 +61,7 @@ process.ProductionFilterSequence = cms.Sequence(process.generator)
 #################################
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('keep *'),
-        fileName = cms.untracked.string('step1_0.root')
+        fileName = cms.untracked.string('test.root')
         )
 
 process.generation_step = cms.Path(process.pgen)
