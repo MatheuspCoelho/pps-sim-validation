@@ -31,7 +31,8 @@ input = cms.untracked.int32(-1)
 process.beamDivergenceVtxGenerator.src = cms.InputTag("")
 process.beamDivergenceVtxGenerator.srcGenParticle = cms.VInputTag(
 #    cms.InputTag("genPUProtons","genPUProtons"),
-    cms.InputTag("genParticles")                                                                                           )
+    cms.InputTag("genParticles")
+)
 
 # do not apply vertex smearing again                                                                                                                   
 process.ctppsBeamParametersFromLHCInfoESSource.vtxStddevX = 0
