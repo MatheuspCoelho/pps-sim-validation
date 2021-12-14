@@ -21,11 +21,11 @@ process.load('Configuration.StandardSequences.GeometrySimDB_cff')
 process.load('IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi')
 process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
   generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+xseed)),
-  VtxSmeared= cms.PSet(initialSeed = cms.untracked.uint32(20000+xseed)),
-  LHCTransport=cms.PSet(initialSeed = cms.untracked.uint32(30000+xseed),
+  VtxSmeared = cms.PSet(initialSeed = cms.untracked.uint32(20000+xseed)),
+  LHCTransport = cms.PSet(initialSeed = cms.untracked.uint32(30000+xseed),
                         engineName = cms.untracked.string('TRandom3')),
-  g4SimHits=cms.PSet(initialSeed = cms.untracked.uint32(40000+xseed)),
-  beamDivergenceVtxGenerator=cms.PSet(initialSeed = cms.untracked.uint32(50000+xseed))
+  g4SimHits = cms.PSet(initialSeed = cms.untracked.uint32(40000+xseed)),
+  beamDivergenceVtxGenerator = cms.PSet(initialSeed = cms.untracked.uint32(50000+xseed))
 )
 
 process.load('SimG4Core.Application.g4SimHits_cfi')
