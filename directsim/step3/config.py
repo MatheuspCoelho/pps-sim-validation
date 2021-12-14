@@ -20,7 +20,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:../step2/test.root'),
+    fileNames = cms.untracked.vstring('file:xinput'),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
     secondaryFileNames = cms.untracked.vstring()
 )
@@ -28,7 +28,6 @@ process.source = cms.Source("PoolSource",
 # Track memory leaks
 process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",ignoreTotal = cms.untracked.int32(1) )
 process.options = cms.untracked.PSet(
-    SkipEvent = cms.untracked.vstring('ProductNotFound')
 )
 
 # Output definition
@@ -41,7 +40,7 @@ process.output = cms.OutputModule("PoolOutputModule",
         filterName = cms.untracked.string('')
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(31457280),
-    fileName = cms.untracked.string('test.root'),
+    fileName = cms.untracked.string('xfileout'),
     outputCommands = cms.untracked.vstring(
         "drop *",
         "keep *_genParticles_*_*",
