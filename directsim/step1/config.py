@@ -19,12 +19,19 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.StandardSequences.GeometrySimDB_cff')
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(100)
+        input = cms.untracked.int32(xevents)
         )
 
 process.source = cms.Source("EmptySource",
         firstLuminosityBlock = cms.untracked.uint32(1)
         )
+
+process.load('IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi')
+process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
+  generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+xseed)),
+  VtxSmeared = cms.PSet(initialSeed = cms.untracked.uint32(20000+xseed)),
+  g4SimHits = cms.PSet(initialSeed = cms.untracked.uint32(30000+xseed)),
+)
 
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2021_realistic', '')
@@ -61,7 +68,7 @@ process.ProductionFilterSequence = cms.Sequence(process.generator)
 #################################
 process.o1 = cms.OutputModule("PoolOutputModule",
         outputCommands = cms.untracked.vstring('keep *'),
-        fileName = cms.untracked.string('test.root')
+        fileName = cms.untracked.string('xfileout')
         )
 
 process.generation_step = cms.Path(process.pgen)
