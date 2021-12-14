@@ -19,10 +19,9 @@ process.load('Configuration.StandardSequences.GeometryDB_cff')
 # Input source
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1))
 process.source = cms.Source("PoolSource",
-    skipEvents=cms.untracked.uint32(0), 
     dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
-    fileNames = cms.untracked.vstring('file:../step1/test.root'),
+    fileNames = cms.untracked.vstring('file:xinput'),
     inputCommands = cms.untracked.vstring(
         'keep *', 
 #        'drop *_genParticles_*_*', 
@@ -45,7 +44,6 @@ process.source = cms.Source("PoolSource",
 )
 
 process.options = cms.untracked.PSet(
-    SkipEvent = cms.untracked.vstring('ProductNotFound')
 )
 
 # Production Info
@@ -61,7 +59,7 @@ process.FEVTDEBUGoutput = cms.OutputModule("PoolOutputModule",
         filterName = cms.untracked.string('')
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(5242880),
-    fileName = cms.untracked.string('test.root'),
+    fileName = cms.untracked.string('xfileout'),
     outputCommands = process.FEVTDEBUGEventContent.outputCommands +
                      ['keep *_CTPPS*_*_*',
                          'keep *_*RP*_*_*',
