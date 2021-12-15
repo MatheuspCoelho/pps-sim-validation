@@ -16,11 +16,10 @@ process.load("FWCore.MessageService.MessageLogger_cfi")
 process.options   = cms.untracked.PSet(
     allowUnscheduled = cms.untracked.bool(True),
 )
-process.MessageLogger.cerr.FwkReport.reportEvery = 5
 
 # event source         
 process.source = cms.Source("PoolSource",
-  fileNames = cms.untracked.vstring('file:/eos/cms/store/group/phys_pps/sim-validation/directsim/step3/step3_11.root'))
+  fileNames = cms.untracked.vstring('file:xinput'))
 
 # number of events
 process.maxEvents = cms.untracked.PSet(
@@ -45,7 +44,7 @@ process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = -0.6924 * 1E-1
 process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetZ45 = -8.1100 * 1E-1
 
 process.out = cms.OutputModule('PoolOutputModule',
-    fileName = cms.untracked.string('step4_11.root'),
+    fileName = cms.untracked.string('xfileout'),
     outputCommands = process.AODSIMEventContent.outputCommands,
     splitLevel = cms.untracked.int32(0)
 )
