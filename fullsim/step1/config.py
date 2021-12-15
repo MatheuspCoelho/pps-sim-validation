@@ -88,18 +88,18 @@ process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary
 for path in process.paths:
     getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
 
-process.load('SimPPS.Configuration.GenPPS_cff')
-from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
-from IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi import *
-eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
+#process.load('SimPPS.Configuration.GenPPS_cff')
+#from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
+#from IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi import *
+#eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
 
-process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
-#process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
+#process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
+process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
 LHCTransport.useBeamPositionFromLHCInfo=cms.bool(True)
 # If beamspot to be different from database, then:
 #LHCTransport.useBeamPositionFromLHCInfo=cms.bool(False)
-#process.load("CalibPPS.ESProducers.ctppsBeamParametersFromLHCInfoESSource_cfi")
-#process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = 0.#1.915e-5
-#process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = 0.#-4.701e-6
-#process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetZ45 = 0.#-9.104e-2
+process.load("CalibPPS.ESProducers.ctppsBeamParametersFromLHCInfoESSource_cfi")
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = +0.2475 * 1E-1
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = -0.6924 * 1E-1
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetZ45 = -8.1100 * 1E-1
