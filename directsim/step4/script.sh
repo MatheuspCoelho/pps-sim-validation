@@ -5,7 +5,6 @@ cmssw=$4
 scram project $cmssw
 cd $cmssw/src/
 eval `scramv1 runtime -sh`
-git cms-init
 git cms-addpkg Validation/CTPPS
 scram b -j8
 cd -
