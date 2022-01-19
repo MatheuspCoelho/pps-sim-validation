@@ -93,13 +93,13 @@ from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
 from IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi import *
 eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
 
-#process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
-process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
+process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
+#process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
 #LHCTransport.useBeamPositionFromLHCInfo=cms.bool(True)
 # If beamspot to be different from database, then:
 LHCTransport.useBeamPositionFromLHCInfo=cms.bool(False)
 process.load("CalibPPS.ESProducers.ctppsBeamParametersFromLHCInfoESSource_cfi")
-process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = +0.2475 * 1E-1
-process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = -0.6924 * 1E-1
-process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetZ45 = -8.1100 * 1E-1
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = 0.#+0.2475 * 1E-1
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = 0.#-0.6924 * 1E-1
+process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetZ45 = 0.#-8.1100 * 1E-1
