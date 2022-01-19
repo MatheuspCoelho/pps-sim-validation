@@ -7,23 +7,23 @@ cd $cmssw/src/
 eval `scramv1 runtime -sh`
 scram b -j8
 cd -
-#if [ ! -d "${6}/out" ]; then
-#    mkdir ${6}/out
-#fi
-#if [ ! -d "${6}/err" ]; then
-#    mkdir ${6}/err
-#fi
-#if [ ! -d "${6}/log" ]; then
-#    mkdir ${6}/log
-#fi 
-outfile=${3}_${1}.root
+label=${3}_${6}
+outfile=${label}_${1}.root
 sed -i "s/xfileout/$outfile/g" $2
 sed -i "s/xseed/$1/g" $2
 sed -i "s/xevents/$5/g" $2
-cmsRun ${2}
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
-if [ ! -d "$ppseos/${3}" ]; then
-    mkdir $ppseos/${3}
+if [ -z "$6" ]; then
+    config=$2
+else
+    config=$2_$6
 fi
-rsync -avPz $outfile $ppseos/${3}/$outfile
+echo "***"
+echo "Running with ${config}"
+echo "***"
+cmsRun ${config}
+ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
+if [ ! -d "$ppseos/${label}" ]; then
+    mkdir $ppseos/${label}
+fi
+rsync -avPz $outfile $ppseos/${label}/$outfile
 rm -rf *.*
