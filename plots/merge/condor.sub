@@ -8,6 +8,6 @@ log                   = log/$(ClusterId).$(ProcId).log
 should_transfer_files = YES
 
 transfer_input_files  = copyPickMerge_cfg.py
-arguments             = fullsim vtx0
+arguments             = directsim vtx_shift
 
 queue

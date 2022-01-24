@@ -10,7 +10,6 @@ scram b -j8
 cd -
 # replace fullsim <> directsim
 sim=$1
-#sim=directsim
 ppseos=/eos/cms/store/group/phys_pps/sim-validation/${sim}
 outfile=${sim}_${2}.root
 if [ $sim == fullsim ]; then
