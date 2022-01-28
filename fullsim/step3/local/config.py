@@ -22,7 +22,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:../../../../step2/local/CMSSW_12_3_X_2022-01-20-2300/src/step2_local.root'),
+    fileNames = cms.untracked.vstring('file:../../step2/local/step2_local.root'),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
     secondaryFileNames = cms.untracked.vstring()
 )

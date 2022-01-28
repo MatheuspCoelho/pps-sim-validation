@@ -29,7 +29,7 @@ process.source = cms.Source("PoolSource",
     skipEvents=cms.untracked.uint32(0), 
     dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
     duplicateCheckMode = cms.untracked.string('noDuplicateCheck'),
-    fileNames = cms.untracked.vstring('file:../../../../step1/local/CMSSW_12_3_X_2022-01-20-2300/src/step1_local.root'),
+    fileNames = cms.untracked.vstring('file:../../step1/local/step1_local.root'),
     inputCommands = cms.untracked.vstring(
         'keep *', 
         'drop *_genParticles_*_*', 
