@@ -8,7 +8,7 @@ log                   = log/$(ClusterId).$(ProcId).log
 should_transfer_files = YES
 
 transfer_input_files  = config.py
-arguments             = $(Process) config.py step1 CMSSW_12_3_0_pre1 500 LHCInfo
+arguments             = $(Process) config.py step1 CMSSW_12_3_0_pre1 500 noLHCInfo
 # 1: seed to be used as InitialSeed
 # 2: config file for step1
 # 3: job name and output folder in EOS
