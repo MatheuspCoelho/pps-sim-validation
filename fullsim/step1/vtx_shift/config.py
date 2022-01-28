@@ -96,9 +96,9 @@ eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGene
 process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 #process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
-LHCTransport.useBeamPositionFromLHCInfo=cms.bool(True)
-# If beamspot to be different from database, then:
 #LHCTransport.useBeamPositionFromLHCInfo=cms.bool(False)
+# If beamspot to be different from database, then:
+LHCTransport.useBeamPositionFromLHCInfo=cms.bool(True)
 process.load("CalibPPS.ESProducers.ctppsBeamParametersFromLHCInfoESSource_cfi")
 process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = -0.2475 * 1E-1
 process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = -0.6924 * 1E-1
