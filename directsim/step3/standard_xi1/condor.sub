@@ -1,0 +1,20 @@
+executable            = script.sh
+requirements          = (OpSysAndVer =?= "CentOS7")
+error                 = err/$(ClusterId).$(ProcId).err
+output                = out/$(ClusterId).$(ProcId).out
+log                   = log/$(ClusterId).$(ProcId).log
++JobBatchName         = "direct_step3_$(LABEL)"
++JobFlavour           = "microcentury"
+should_transfer_files = YES
+
+LABEL                 = standard_xi1
+transfer_input_files  = config.py
+arguments             = $(Process) config.py step3 CMSSW_12_3_0_pre1 500 $(LABEL)
+# 1: seed to be used as InitialSeed
+# 2: config file for step1
+# 3: job name and output folder in EOS
+# 4: cmssw release
+# 5: number of events per file
+# 6: label for job outputs
+
+queue 100
