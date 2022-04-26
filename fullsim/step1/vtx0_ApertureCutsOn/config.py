@@ -88,12 +88,18 @@ process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary
 for path in process.paths:
     getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
 
-process.load('SimPPS.Configuration.GenPPS_cff')
+# for unsmeared collection only
 from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
-from IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi import *
-eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
-
 process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
+
+# for smeared collection
+#process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
+
+# for unsmeared and TOTEM vertex smearing (beamDivergenceVtxGenerator uses unsmeared as input)
+#process.load('SimPPS.Configuration.GenPPS_cff')
+#from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
+#from IOMC.EventVertexGenerators.beamDivergenceVtxGenerator_cfi import *
+#eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
 #process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
 #LHCTransport.useBeamPositionFromLHCInfo=cms.bool(False)
