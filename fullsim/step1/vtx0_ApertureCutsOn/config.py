@@ -90,10 +90,10 @@ for path in process.paths:
 
 # for unsmeared collection only
 from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
-process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
+#process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 
 # for smeared collection
-#process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
+process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
 
 # for unsmeared and TOTEM vertex smearing (beamDivergenceVtxGenerator uses unsmeared as input)
 #process.load('SimPPS.Configuration.GenPPS_cff')
