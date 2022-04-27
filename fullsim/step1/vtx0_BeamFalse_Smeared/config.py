@@ -89,11 +89,11 @@ for path in process.paths:
     getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
 
 # for unsmeared collection only
-from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
+#from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
 #process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 
-# for smeared collection
-process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
+# for smeared collection: DEFAULT - no need to be changed
+#process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
 
 # for unsmeared and TOTEM vertex smearing (beamDivergenceVtxGenerator uses unsmeared as input)
 #process.load('SimPPS.Configuration.GenPPS_cff')
