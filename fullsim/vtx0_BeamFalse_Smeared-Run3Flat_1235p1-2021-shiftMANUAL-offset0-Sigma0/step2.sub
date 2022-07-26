@@ -1,0 +1,19 @@
+executable            = step2.sh
+requirements          = (OpSysAndVer =?= "CentOS7")
+error                 = err/step2/$(ClusterId).$(ProcId).err
+output                = out/step2/$(ClusterId).$(ProcId).out
+log                   = log/step2/$(ClusterId).$(ProcId).log
++JobBatchName         = "full_step2_$(LABEL)"
++JobFlavour           = "tomorrow"
+should_transfer_files = YES
+
+transfer_input_files  = step2.py
+arguments             = $(ProcId) step2.py step2 $(vCMSSW) $(EVTS) $(LABEL)
+# 1: seed to be used as InitialSeed
+# 2: config file for step1
+# 3: job name and output folder in EOS
+# 4: cmssw release
+# 5: number of events per file
+# 6: label for job outputs
+
+queue $(FILES)

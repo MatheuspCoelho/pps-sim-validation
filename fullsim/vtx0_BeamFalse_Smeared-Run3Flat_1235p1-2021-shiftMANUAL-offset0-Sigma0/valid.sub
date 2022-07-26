@@ -1,0 +1,16 @@
+executable            = valid.sh
+requirements          = (OpSysAndVer =?= "CentOS7")
+error                 = err/$(ClusterId).$(ProcId).err
+output                = out/$(ClusterId).$(ProcId).out
++JobBatchName         = "valid_$(type)_$(LABEL)"
++JobFlavour           = "longlunch"
+should_transfer_files = YES
+
+LABEL=vtx0_BeamFalse_Smeared-Run3Flat_1235p1-2021-shiftMANUAL
+vCMSSW=CMSSW_12_3_5_patch1
+
+type                  = fullsim
+transfer_input_files  = validator.cc
+arguments             = $(type) $(LABEL) $(vCMSSW)
+
+queue

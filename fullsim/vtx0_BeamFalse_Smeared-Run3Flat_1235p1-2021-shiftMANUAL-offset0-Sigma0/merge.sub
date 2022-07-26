@@ -1,0 +1,13 @@
+executable            = merge.sh
+requirements          = (OpSysAndVer =?= "CentOS7")
+error                 = err/$(ClusterId).$(ProcId).err
+output                = out/$(ClusterId).$(ProcId).out
++JobBatchName         = "merge_$(type)_$(LABEL)"
++JobFlavour           = "longlunch"
+should_transfer_files = YES
+
+type                  = fullsim
+transfer_input_files  = merge.py
+arguments             = $(type) $(LABEL) $(vCMSSW)
+
+queue

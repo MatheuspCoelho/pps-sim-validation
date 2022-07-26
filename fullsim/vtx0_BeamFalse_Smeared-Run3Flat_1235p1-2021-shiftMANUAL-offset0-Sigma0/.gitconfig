@@ -1,0 +1,12 @@
+[user]
+	github = diemort
+	name = Gustavo
+	email = diemort@gmail.com
+[merge]
+    renameLimit = 999999
+[color]
+	ui = true
+[push]
+	default = matching
+[core]
+	editor = vim
