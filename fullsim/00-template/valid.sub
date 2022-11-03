@@ -1,0 +1,13 @@
+executable            = valid.sh
+requirements          = (OpSysAndVer =?= "CentOS8")
+error                 = err/valid-$(ClusterId).$(ProcId).err
+output                = out/valid-$(ClusterId).$(ProcId).out
++JobBatchName         = "valid_$(type)_$(LABEL)"
++JobFlavour           = "longlunch"
+should_transfer_files = YES
+
+type                  = fullsim
+transfer_input_files  = validator.cc
+arguments             = $(type) $(LABEL) $(vCMSSW)
+
+queue
