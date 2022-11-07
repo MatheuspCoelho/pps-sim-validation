@@ -9,7 +9,8 @@ eval `scramv1 runtime -sh`
 scram b -j8
 # replace fullsim <> directsim
 sim=$1
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/${sim}
+basearea=$4
+ppseos=${basearea}/${sim}
 outfile=${sim}_${2}.root
 if [ $sim == fullsim ]; then
     step=step3

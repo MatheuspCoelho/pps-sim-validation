@@ -46,11 +46,11 @@ process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '
 # Generator
 phi_min = -math.pi
 phi_max = math.pi
-t_min   = 0.
-t_max   = 1.
-xi_min  = 0.02
-xi_max  = 0.15
-ecms = 14000. # ATTENTION: if using HECTOR propagator, currently the energy is hardcoded as 6500 but the optics file is prepared for 7 TeV
+t_min   = xtmin
+t_max   = xtmax
+xi_min  = xximin
+xi_max  = xximax
+ecms = xecms # ATTENTION: if using HECTOR propagator, currently the energy is hardcoded as 6500 but the optics file is prepared for 7 TeV
 
 process.generator = cms.EDProducer("RandomtXiGunProducer",
         PGunParameters = cms.PSet(

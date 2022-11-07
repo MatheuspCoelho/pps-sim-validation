@@ -15,13 +15,24 @@ cp ../../step1.py .
 tag=$4
 label=${step}_${tag}
 outfile=${label}_${it}.root
+xtmin=$5
+xtmax=$6
+xximin=$7
+xximax=$8
+xecms=$9
 # prep step1
 sed -i "s/xfileout/$outfile/g" step1.py
 sed -i "s/xseed/$1/g" step1.py
 sed -i "s/xevents/$3/g" step1.py
+sed -i "s/xtmin/$xtmin/g" step1.py
+sed -i "s/xtmax/$xtmax/g" step1.py
+sed -i "s/xximin/$xximin/g" step1.py
+sed -i "s/xximax/$xximax/g" step1.py
+sed -i "s/xecms/$xecms/g" step1.py
 # run step1
 cmsRun step1.py
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
+basearea=$5
+ppseos=${basearea}/fullsim
 if [ ! -d "$ppseos/${tag}/${step}" ]; then
     mkdir -p $ppseos/${tag}/${step}
 fi
@@ -39,7 +50,6 @@ sed -i "s/xfileout/$outfile/g" step2.py
 sed -i "s/xseed/$1/g" step2.py
 # run step2
 cmsRun step2.py
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
 if [ ! -d "$ppseos/${tag}/${step}" ]; then
     mkdir -p $ppseos/${tag}/${step}
 fi
@@ -57,7 +67,6 @@ sed -i "s/xfileout/$outfile/g" step3.py
 # run step3
 cmsRun step3.py
 # prep storage
-ppseos=/eos/cms/store/group/phys_pps/sim-validation/fullsim
 if [ ! -d "$ppseos/${tag}/${step}" ]; then
     mkdir -p $ppseos/${tag}/${step}
 fi

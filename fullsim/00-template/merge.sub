@@ -8,6 +8,6 @@ should_transfer_files = YES
 
 type                  = fullsim
 transfer_input_files  = merge.py
-arguments             = $(type) $(LABEL) $(vCMSSW)
+arguments             = $(type) $(LABEL) $(vCMSSW) $(BASE)
 
 queue
