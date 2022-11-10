@@ -28,6 +28,7 @@ cp ../../merge.py .
 cmsRun merge.py inputFiles=$list_files outputFile=$outfile
 xrdcp -f $outfile root://eoscms.cern.ch/${ppseos}/${outfile}
 # validator
+# g++ -O3 -o validator validator.cc `root-config --cflags --libs --ldflags` -L./lib/ -lboost_program_options
 echo "Starting validation procedure"
 valid=${sim}_${2}_Validation.root
 cp ../../libboost.tar.gz .
