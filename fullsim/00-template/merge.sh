@@ -6,7 +6,6 @@ cmssw=$3
 scram project $cmssw
 cd $cmssw/src/
 eval `scramv1 runtime -sh`
-scram b -j8
 # replace fullsim <> directsim
 sim=$1
 basearea=$4

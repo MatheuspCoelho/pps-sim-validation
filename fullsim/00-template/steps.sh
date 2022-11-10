@@ -7,7 +7,6 @@ cmssw=$2
 scram project $cmssw
 cd $cmssw/src/
 eval `scramv1 runtime -sh`
-scram b -j8
 # prep config
 it=$1
 step=step1
