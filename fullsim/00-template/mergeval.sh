@@ -27,5 +27,13 @@ echo $list_files
 cp ../../merge.py .
 cmsRun merge.py inputFiles=$list_files outputFile=$outfile
 xrdcp -f $outfile root://eoscms.cern.ch/${ppseos}/${outfile}
+# validator
+echo "Starting validation procedure"
+valid=${sim}_${2}_Validation.root
+cp ../../libboost.tar.gz .
+tar zxvf libboost.tar.gz
+cp ../../validator .
+./validator --i ${outfile} --o ${valid} --s ${sim} --y 2022
+xrdcp -f ${valid} root://eoscms.cern.ch/${ppseos}/${valid}
 cd ../..
 rm -rf CMSSW*

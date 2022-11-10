@@ -1,6 +1,5 @@
 JOB A steps.sub
-JOB B merge.sub
-JOB C valid.sub
+JOB B mergeval.sub
 VARS ALL_NODES LABEL="condor-placeholder"
 VARS ALL_NODES vCMSSW="CMSSW_12_6_0_pre4"
 VARS ALL_NODES EVTS="250"
@@ -12,4 +11,3 @@ VARS A XIMIN="0.02"
 VARS A XIMAX="0.15"
 VARS ALL_NODES ECMS="14000."
 PARENT A CHILD B
-PARENT B CHILD C

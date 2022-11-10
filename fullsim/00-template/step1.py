@@ -105,7 +105,7 @@ process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 #process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
 # Simulate hits with coordinates relative to the beam and not the pipe:
-LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
+process.LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
 
 # moving veretx smearing:
 #process.VtxSmeared.MeanX=cms.double(0.0)
