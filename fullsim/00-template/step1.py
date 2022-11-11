@@ -100,6 +100,10 @@ process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 # Simulate hits with coordinates relative to the beam and not the pipe:
 process.LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
 
+# Change beam energy for optical functions:
+process.LHCTransport.BeamEnergy=cms.double(ecms/2)
+print(process.LHCTransport.BeamEnergy)
+
 # for unsmeared and TOTEM vertex smearing (beamDivergenceVtxGenerator uses unsmeared as input)
 #process.load('SimPPS.Configuration.GenPPS_cff')
 #from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
