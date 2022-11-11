@@ -24,7 +24,7 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
   generator = cms.PSet(initialSeed = cms.untracked.uint32(10000+xseed)),
   VtxSmeared = cms.PSet(initialSeed = cms.untracked.uint32(20000+xseed)),
   LHCTransport = cms.PSet(initialSeed = cms.untracked.uint32(30000+xseed),
-                        engineName = cms.untracked.string('TRandom3')),
+                          engineName = cms.untracked.string('TRandom3')),
   g4SimHits = cms.PSet(initialSeed = cms.untracked.uint32(40000+xseed)),
   beamDivergenceVtxGenerator = cms.PSet(initialSeed = cms.untracked.uint32(50000+xseed))
 )
@@ -32,9 +32,7 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
 process.load('SimG4Core.Application.g4SimHits_cfi')
 process.g4SimHits.LHCTransport = cms.bool(True)
 
-process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(xevents)
-        )
+process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(xevents))
 
 process.source = cms.Source("EmptySource",
         firstLuminosityBlock = cms.untracked.uint32(xseed+1)
@@ -50,7 +48,7 @@ t_min   = xtmin
 t_max   = xtmax
 xi_min  = xximin
 xi_max  = xximax
-ecms = xecms
+ecms    = xecms
 # if using HECTOR propagator, current version has the energy hardcoded as 6500 but the optics file is prepared for 7 TeV
 
 process.generator = cms.EDProducer("RandomtXiGunProducer",
@@ -90,11 +88,13 @@ process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary
 for path in process.paths:
     getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
 
-# modify common parameters in ProtonTransport:
-# defaults here SimTransport/PPSProtonTransport/python/CommonParameters_cfi.py
+
+# Modify common parameters in ProtonTransport:
+
+# Defaults here SimTransport/PPSProtonTransport/python/CommonParameters_cfi.py
 from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
 
-# for unsmeared collection only
+# For unsmeared collection only
 process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 
 # Simulate hits with coordinates relative to the beam and not the pipe:
