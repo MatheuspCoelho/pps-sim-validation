@@ -50,7 +50,8 @@ t_min   = xtmin
 t_max   = xtmax
 xi_min  = xximin
 xi_max  = xximax
-ecms = xecms # ATTENTION: if using HECTOR propagator, currently the energy is hardcoded as 6500 but the optics file is prepared for 7 TeV
+ecms = xecms
+# if using HECTOR propagator, current version has the energy hardcoded as 6500 but the optics file is prepared for 7 TeV
 
 process.generator = cms.EDProducer("RandomtXiGunProducer",
         PGunParameters = cms.PSet(
@@ -89,13 +90,15 @@ process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary
 for path in process.paths:
     getattr(process,path)._seq = process.ProductionFilterSequence * getattr(process,path)._seq
 
+# modify common parameters in ProtonTransport:
+# defaults here SimTransport/PPSProtonTransport/python/CommonParameters_cfi.py
 from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
 
 # for unsmeared collection only
 process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 
-# for smeared collection
-#process.LHCTransport.HepMCProductLabel = cms.InputTag('generatorSmeared')
+# Simulate hits with coordinates relative to the beam and not the pipe:
+process.LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
 
 # for unsmeared and TOTEM vertex smearing (beamDivergenceVtxGenerator uses unsmeared as input)
 #process.load('SimPPS.Configuration.GenPPS_cff')
@@ -104,10 +107,7 @@ process.LHCTransport.HepMCProductLabel = cms.InputTag('generator','unsmeared')
 #eras.ctpps.toReplaceWith(process.PPSTransportTask,cms.Task(beamDivergenceVtxGenerator,LHCTransport))
 #process.LHCTransport.HepMCProductLabel = cms.InputTag('beamDivergenceVtxGenerator')
 
-# Simulate hits with coordinates relative to the beam and not the pipe:
-process.LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
-
-# moving veretx smearing:
+# moving vertex smearing position:
 #process.VtxSmeared.MeanX=cms.double(0.0)
 #process.VtxSmeared.MeanY=cms.double(0.0)
 #process.VtxSmeared.MeanZ=cms.double(0.0)
@@ -121,10 +121,10 @@ process.LHCTransport.produceHitsRelativeToBeam = cms.bool(False)
 #print(process.VtxSmeared.SigmaY)
 #print(process.VtxSmeared.SigmaZ)
 
-#process.LHCTransport.useBeamPositionFromLHCInfo=cms.bool(False)
 # If beamspot to be different from database, then:
-#from SimTransport.PPSProtonTransport.PPSTransport_cff import LHCTransport
 process.LHCTransport.useBeamPositionFromLHCInfo=cms.bool(True)
+
+# change vertex offset:
 process.load("CalibPPS.ESProducers.ctppsBeamParametersFromLHCInfoESSource_cfi")
 #process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetX45 = 0.0107682
 #process.ctppsBeamParametersFromLHCInfoESSource.vtxOffsetY45 = 0.041722
