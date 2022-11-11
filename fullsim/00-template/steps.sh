@@ -14,11 +14,11 @@ cp ../../step1.py .
 tag=$4
 label=${step}_${tag}
 outfile=${label}_${it}.root
-xtmin=$5
-xtmax=$6
-xximin=$7
-xximax=$8
-xecms=$9
+xtmin=$6
+xtmax=$7
+xximin=$8
+xximax=$9
+xecms=$10
 # prep step1
 sed -i "s/xfileout/$outfile/g" step1.py
 sed -i "s/xseed/$1/g" step1.py
