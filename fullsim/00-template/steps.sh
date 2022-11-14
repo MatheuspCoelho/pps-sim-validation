@@ -20,7 +20,7 @@ xtmin=$6
 xtmax=$7
 xximin=$8
 xximax=$9
-xecms=$10
+xecms=${10}
 # setting up files
 label=${step}_${tag}
 outfile=${label}_${it}.root
