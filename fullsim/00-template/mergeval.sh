@@ -34,6 +34,9 @@ valid=${sim}_${2}_Validation.root
 cp ../../libboost.tar.gz .
 tar zxvf libboost.tar.gz
 cp ../../validator .
+# options
+# s: fullsim or directsim
+# y: 2022 (14TeV) or 2021 (13.6TeV) or 2016-17-18 (13 TeV)
 ./validator --i ${outfile} --o ${valid} --s ${sim} --y 2022
 xrdcp -f ${valid} root://eoscms.cern.ch/${ppseos}/${valid}
 cd ../..
