@@ -81,3 +81,4 @@ xrdcp -f $outfile root://eoscms.cern.ch/$ppseos/${tag}/${step}/$outfile
 # clean working node
 cd ../..
 rm -rf CMSSW*
+rm -rf `whoami`.cc

@@ -45,5 +45,8 @@ cp ../../validator .
 # y: 2022 (14TeV) or 2021 (13.6TeV) or 2016-17-18 (13 TeV)
 ./validator --i ${outfile} --o ${valid} --s ${sim} --y 2022
 xrdcp -f ${valid} root://eoscms.cern.ch/${ppseos}/${valid}
+
+# clean area
 cd ../..
 rm -rf CMSSW*
+rm -rf `whoami`.cc
