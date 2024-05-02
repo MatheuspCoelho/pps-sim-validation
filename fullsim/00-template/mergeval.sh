@@ -1,16 +1,22 @@
 #!/bin/bash
 
-source /cvmfs/cms.cern.ch/cmsset_default.sh
-export SCRAM_ARCH=slc7_amd64_gcc10
+# replace fullsim <> directsim
+sim=$1
+label=$2
 cmssw=$3
+basearea=$4
+scram=$5
+
+# prep cmssw
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+export SCRAM_ARCH=$scram
 scram project $cmssw
 cd $cmssw/src/
 eval `scramv1 runtime -sh`
-# replace fullsim <> directsim
-sim=$1
-basearea=$4
+
+# prep files
 ppseos=${basearea}/${sim}
-outfile=${sim}_${2}.root
+outfile=${sim}_${label}.root
 if [ $sim == fullsim ]; then
     step=step3
 elif [ $sim == directsim ]; then
@@ -19,8 +25,8 @@ else:
     echo "Wrong step"
     break
 fi
-if [ $2 != "" ]; then
-    step=${2}/${step}
+if [ ${label} != "" ]; then
+    step=${label}/${step}
 fi
 list_files=`ls ${ppseos}/${step}/*|awk '{printf("file:%s,",$1)}' | sed -e's/,$//'`
 echo $list_files
@@ -30,7 +36,7 @@ xrdcp -f $outfile root://eoscms.cern.ch/${ppseos}/${outfile}
 # validator
 # g++ -O3 -o validator validator.cc `root-config --cflags --libs --ldflags` -L./lib/ -lboost_program_options
 echo "Starting validation procedure"
-valid=${sim}_${2}_Validation.root
+valid=${sim}_${label}_Validation.root
 cp ../../libboost.tar.gz .
 tar zxvf libboost.tar.gz
 cp ../../validator .

@@ -1,5 +1,5 @@
 executable            = mergeval.sh
-requirements          = (OpSysAndVer =?= "CentOS8")
+requirements          = (OpSysAndVer =?= "CentOS7")
 error                 = err/merge-$(ClusterId).$(ProcId).err
 output                = out/merge-$(ClusterId).$(ProcId).out
 +JobBatchName         = "merge_$(type)_$(LABEL)"
@@ -8,6 +8,6 @@ should_transfer_files = YES
 
 type                  = fullsim
 transfer_input_files  = merge.py,validator,libboost.tar.gz
-arguments             = $(type) $(LABEL) $(vCMSSW) $(BASE)
+arguments             = $(type) $(LABEL) $(vCMSSW) $(BASE) $(SCRAM)
 
 queue
